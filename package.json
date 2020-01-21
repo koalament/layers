@@ -1,0 +1,19 @@
+{
+  "name": "koalament-layers",
+  "version": "1.0.0",
+  "description": "For this service to be an opensource project and work properly as it is supposed to, every other service needs to follow the standard that is provided by Koalament. This is a requirement that other services and developers have to comply with.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koalament/layers.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/koalament/layers/issues"
+  },
+  "homepage": "https://github.com/koalament/layers#readme"
+}
