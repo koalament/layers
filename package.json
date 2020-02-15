@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/koalament/layers/issues"
   },
-  "homepage": "https://github.com/koalament/layers#readme"
+  "homepage": "https://github.com/koalament/layers#readme",
+  "dependencies": {
+    "node-gzip": "^1.1.2"
+  }
 }
