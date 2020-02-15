@@ -4,6 +4,7 @@ const formats = {
   plain: require("./formats/plain"),
   gzip: require("./formats/gzip")
 }
+const LAYER_NUMBER = "1";
 function decode(input, callback) {
   if (!input) {
     callback(new Error(`Unknown input ${input}`));
@@ -21,6 +22,17 @@ function decode(input, callback) {
     return;
   }
   let splitted = input.split(" ");
+  const layer = splitted.shift();
+  if (parseInt(layer) > parseInt(LAYER_NUMBER)) {
+    callback(new Error(`Layer is not supported.`));
+
+    return;
+  }
+  if (parseInt(layer) < parseInt(LAYER_NUMBER)) {
+    callback(new Error(`Ooooooops!`));
+
+    return;
+  }
   const format = splitted.shift();
   if (["plain", "gzip"].indexOf(format) === -1) {
     callback(new Error(`Unknown format ${format}`));
@@ -60,6 +72,39 @@ function decode(input, callback) {
   });
 }
 
+function encode(method, format, params, callback) {
+  switch (method) {
+    case "comment": {
+      if (!params.key || !params.text) {
+        callback(new Error("Mismatch params!"));
+
+        return;
+      }
+    } break;
+    default: {
+      callback(new Error("Mismatch method!"));
+
+      return;
+    }
+  }
+  let message = ["0", JSON.stringify(params)].join(" ");
+  if (!formats[format]) {
+    callback(new Error(`Format ${format} not supported.`));
+
+    return;
+  }
+  formats[format].encode(message, (err, formattedMessage) => {
+    if (err) {
+      callback(err);
+
+      return;
+    }
+    const op = new Buffer(`koalament 1 ${format} ${formattedMessage}`).toString("hex");
+    callback(undefined, op);
+  })
+}
+
 module.exports = {
+  encode: encode,
   decode: decode
 }
