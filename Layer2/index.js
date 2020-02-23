@@ -121,7 +121,7 @@ function decode(input, callback) {
     switch (method) {
       case 0: {
         if (json.key && json.text) {
-          callback(undefined, { ...{ _method: method }, ...json });
+          callback(undefined, { ...{ _method: method, _layer: parseInt(layer) }, ...json });
 
           return;
         }
@@ -129,7 +129,7 @@ function decode(input, callback) {
       }; break;
       case 1: {
         if (json.key && json.text) {
-          callback(undefined, { ...{ _method: method }, ...json });
+          callback(undefined, { ...{ _method: method, _layer: parseInt(layer) }, ...json });
 
           return;
         }
@@ -137,7 +137,7 @@ function decode(input, callback) {
       }; break;
       case 2: {
         if (json.key) {
-          callback(undefined, { ...{ _method: method }, ...json });
+          callback(undefined, { ...{ _method: method, _layer: parseInt(layer) }, ...json });
 
           return;
         }
@@ -145,7 +145,7 @@ function decode(input, callback) {
       }; break;
       case 3: {
         if (json.key) {
-          callback(undefined, { ...{ _method: method }, ...json });
+          callback(undefined, { ...{ _method: method, _layer: parseInt(layer) }, ...json });
 
           return;
         }
@@ -158,7 +158,24 @@ function decode(input, callback) {
   });
 }
 
+function toLayer(data, layer) {
+  if (layer > LAYER_NUMBER) {
+    return undefined;
+  }
+  //Layer 1 does not support other methods else 0 [ comment ]
+  if (layer === 1 && data._method > 0) {
+    return undefined;
+  }
+  if (layer === 1 && data._method === 0) {
+    const newData = { ...data };
+    newData._layer = 1;
+
+    return newData;
+  }
+  return data;
+}
 module.exports = {
   encode: encode,
-  decode: decode
+  decode: decode,
+  toLayer: toLayer
 }
