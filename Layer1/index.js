@@ -59,7 +59,7 @@ function decode(input, callback) {
     switch (method) {
       case 0: {
         if (json.key && json.text) {
-          callback(undefined, { ...{ _method: method }, ...json });
+          callback(undefined, { ...{ _method: method, _layer: parseInt(layer) }, ...json });
 
           return;
         }
