@@ -167,12 +167,12 @@ function toLayer(data, layer) {
     return undefined;
   }
   if (layer === 1 && data._method === 0) {
-    const newData = { ...data };
-    newData._layer = 1;
+    const newData = { ...data, ...{ _layer: 1 } };
 
     return newData;
   }
-  return data;
+  const newData = { ...data, ...{ _layer: 2 } };
+  return newData;
 }
 module.exports = {
   encode: encode,
