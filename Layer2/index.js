@@ -1,4 +1,3 @@
-
 const valid_methods = [0, 1, 2, 3];
 const LAYER_NUMBER = 2;
 const layer1 = require("../Layer1");
