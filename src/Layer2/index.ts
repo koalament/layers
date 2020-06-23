@@ -18,7 +18,8 @@ export class LAYER2 implements ILayer<ILayer2Params, ILayer1Params> {
     comment: "0",
     reply: "1",
     clap: "2",
-    report: "3"
+    boo: "3",
+    report: "4"
   };
   private readonly formats: { [key: string]: IFormatter } = { plain: new PlainFormatter(), gzip: new GzipFormatter() };
 
@@ -39,6 +40,13 @@ export class LAYER2 implements ILayer<ILayer2Params, ILayer1Params> {
         }
       } break;
       case "clap": {
+        if (!params.key) {
+          callback(new Error("Mismatch params!"));
+
+          return;
+        }
+      } break;
+      case "boo": {
         if (!params.key) {
           callback(new Error("Mismatch params!"));
 
