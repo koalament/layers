@@ -1,9 +1,0 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var Layer1_1 = require("./Layer1");
-var Layer2_1 = require("./Layer2");
-var layer1 = new Layer1_1.LAYER1();
-exports.layer1 = layer1;
-var layer2 = new Layer2_1.LAYER2();
-exports.layer2 = layer2;
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi9zcmMvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxtQ0FBa0M7QUFDbEMsbUNBQWtDO0FBRWxDLElBQU0sTUFBTSxHQUFXLElBQUksZUFBTSxFQUFFLENBQUM7QUFHbEMsd0JBQU07QUFGUixJQUFNLE1BQU0sR0FBVyxJQUFJLGVBQU0sRUFBRSxDQUFDO0FBRTFCLHdCQUFNIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgTEFZRVIxIH0gZnJvbSBcIi4vTGF5ZXIxXCI7XG5pbXBvcnQgeyBMQVlFUjIgfSBmcm9tIFwiLi9MYXllcjJcIjtcblxuY29uc3QgbGF5ZXIxOiBMQVlFUjEgPSBuZXcgTEFZRVIxKCk7XG5jb25zdCBsYXllcjI6IExBWUVSMiA9IG5ldyBMQVlFUjIoKTtcbmV4cG9ydCB7XG4gIGxheWVyMSwgbGF5ZXIyXG59O1xuIl19
