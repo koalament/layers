@@ -5,6 +5,7 @@ import { GzipFormatter } from "./formats/gzip";
 import { LAYER1, ILayer1Params } from "../Layer1";
 
 export interface ILayer2Params {
+  nick_name?: string;
   key: string;
   text: string;
   _method: number;
