@@ -2,7 +2,7 @@ import { ILayer } from "../../types/layer";
 import { TEXT_FORMAT, IFormatter } from "../../types/formats";
 import { PlainFormatter } from "./formats/plain";
 import { GzipFormatter } from "./formats/gzip";
-
+import { Buffer } from "buffer";
 export interface ILayer1Params {
   key: string;
   text: string;

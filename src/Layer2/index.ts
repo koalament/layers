@@ -3,6 +3,7 @@ import { TEXT_FORMAT, IFormatter } from "../../types/formats";
 import { PlainFormatter } from "./formats/plain";
 import { GzipFormatter } from "./formats/gzip";
 import { LAYER1, ILayer1Params } from "../Layer1";
+import { Buffer } from "buffer";
 
 export interface ILayer2Params {
   nick_name?: string;
