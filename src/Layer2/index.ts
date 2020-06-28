@@ -1,5 +1,5 @@
 import { ILayer } from "../../types/layer";
-import { TEXT_FORMAT, IFormatter } from "../../types/formats";
+import { IFormatter } from "../../types/formats";
 import { PlainFormatter } from "./formats/plain";
 import { GzipFormatter } from "./formats/gzip";
 import { LAYER1, ILayer1Params } from "../Layer1";
@@ -24,7 +24,7 @@ export class LAYER2 implements ILayer<ILayer2Params, ILayer1Params> {
   };
   private readonly formats: { [key: string]: IFormatter } = { plain: new PlainFormatter(), gzip: new GzipFormatter() };
 
-  public encode(method: string, format: TEXT_FORMAT, params: { [key: string]: any }, callback: (err: Error, encoded?: string) => void): void {
+  public encode(method: string, format: string, params: { [key: string]: any }, callback: (err: Error, encoded?: string) => void): void {
     switch (method) {
       case "comment": {
         if (!params.key || !params.text) {
