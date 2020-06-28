@@ -24,7 +24,7 @@ export class LAYER2 implements ILayer<ILayer2Params, ILayer1Params> {
   };
   private readonly formats: { [key: string]: IFormatter } = { plain: new PlainFormatter(), gzip: new GzipFormatter() };
 
-  public encode(method: string, format: string, params: { [key: string]: any }, callback: (err: Error, encoded?: string) => void): void {
+  public encode(method: string, format: "plain" | "gzip", params: { [key: string]: any }, callback: (err: Error, encoded?: string) => void): void {
     switch (method) {
       case "comment": {
         if (!params.key || !params.text) {
