@@ -1,5 +1,5 @@
 import { IFormatter } from "../../../../types/formats";
-import { gzip, unzip } from "../../../libs/gzip";
+import { gzip, ungzip } from "../../../libs/gzip";
 import { Buffer } from "buffer";
 
 export class GzipFormatter implements IFormatter {
@@ -10,7 +10,7 @@ export class GzipFormatter implements IFormatter {
       }).catch(callback);
   }
   public decode(input: string, callback: (err: Error, decoded?: string) => void): void {
-    unzip(Buffer.from(input, "base64")).then((decompressed: Buffer) => {
+    ungzip(Buffer.from(input, "base64")).then((decompressed: Buffer) => {
       callback(undefined, decompressed.toString("utf8"));
     }).catch(callback);
   }

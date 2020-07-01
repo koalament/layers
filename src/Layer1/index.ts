@@ -75,7 +75,7 @@ export class LAYER1 implements ILayer<ILayer1Params, any> {
       return;
     }
 
-    this.formats[format].decode(splitted.pop(), (err: Error, data: string) => {
+    this.formats[format].decode(splitted.join(" "), (err: Error, data: string) => {
       if (err) {
         console.log(err);
         callback(err);
