@@ -13,7 +13,7 @@ export interface ILayer2Params {
 }
 export class LAYER2 implements ILayer<ILayer2Params, ILayer1Params> {
   private readonly LAYER_NUMBER: number = 2;
-  private readonly VALID_METHODS: number[] = [0, 1, 2, 3];
+  private readonly VALID_METHODS: number[] = [0, 1, 2, 3, 4];
   private readonly LastLayers: { [key: number]: ILayer<ILayer1Params, any> } = { 1: new LAYER1() };
   private readonly METHOD_CODES: { [key: string]: string } = {
     comment: "0",
@@ -157,6 +157,14 @@ export class LAYER2 implements ILayer<ILayer2Params, ILayer1Params> {
         } break;
         case 3: {
           if (json.key) {
+            callback(undefined, { ...{ _method: method, _layer: layer }, ...json });
+
+            return;
+          }
+          callback(new Error(`No pass required data! ${JSON.stringify(json)}`));
+        } break;
+        case 4: {
+          if (json.key && json.text) {
             callback(undefined, { ...{ _method: method, _layer: layer }, ...json });
 
             return;
