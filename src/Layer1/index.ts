@@ -1,8 +1,8 @@
 import { ILayer } from "../../types/layer";
-import { TEXT_FORMAT, IFormatter } from "../../types/formats";
+import { IFormatter } from "../../types/formats";
 import { PlainFormatter } from "./formats/plain";
 import { GzipFormatter } from "./formats/gzip";
-
+import { Buffer } from "buffer";
 export interface ILayer1Params {
   key: string;
   text: string;
@@ -13,7 +13,7 @@ export class LAYER1 implements ILayer<ILayer1Params, any> {
   private readonly VALID_METHODS: number[] = [0];
   private readonly formats: { [key: string]: IFormatter } = { plain: new PlainFormatter(), gzip: new GzipFormatter() };
 
-  public encode(method: string, format: TEXT_FORMAT, params: { [key: string]: any }, callback: (err: Error, encoded?: string) => void): void {
+  public encode(method: string, format: "plain" | "gzip", params: { [key: string]: any }, callback: (err: Error, encoded?: string) => void): void {
     switch (method) {
       case "comment": {
         if (!params.key || !params.text) {
@@ -75,7 +75,7 @@ export class LAYER1 implements ILayer<ILayer1Params, any> {
       return;
     }
 
-    this.formats[format].decode(splitted.pop(), (err: Error, data: string) => {
+    this.formats[format].decode(splitted.join(" "), (err: Error, data: string) => {
       if (err) {
         console.log(err);
         callback(err);
