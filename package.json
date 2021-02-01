@@ -1,6 +1,6 @@
 {
   "name": "koalament-layers",
-  "version": "2.2.0-beta.10",
+  "version": "2.2.0-beta.11",
   "description": "For this service to be an opensource project and work properly as it is supposed to, every other service needs to follow the standard that is provided by Koalament. This is a requirement that other services and developers have to comply with.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
